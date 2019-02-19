@@ -8,7 +8,7 @@ pipeline {
 
  stages {
 
-   stage(‘Checkout’) {
+   stage('Checkout') {
      steps {
        checkout scm
        sh ‘/var/lib/jenkins/workspace/terraform/terraform.tfvars’
@@ -16,14 +16,14 @@ pipeline {
      }
    }
 
-   stage(‘TF Plan’) {
+   stage('TF Plan') {
      steps {
 
          sh ‘terraform init’
          sh ‘terraform plan -out myplan’
      }
    }
-stage(‘Approval’) {
+stage('Approval') {
      steps {
        script {
          def userInput = input(id: ‘confirm’, message: ‘Apply Terraform?’, parameters: [ [$class: ‘BooleanParameterDefinition’, defaultValue: false, description: ‘Apply terraform’, name: ‘confirm’] ])
@@ -31,7 +31,7 @@ stage(‘Approval’) {
      }
    }
 
-   stage(‘TF Apply’) {
+   stage('TF Apply') {
      steps {
          sh ‘terraform apply -input=false myplan’
      }
