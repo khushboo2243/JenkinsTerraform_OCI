@@ -7,7 +7,6 @@ variable “region” {}
 
 provider “oci” {
  region = “us-ashburn-1"
- auth   = “InstancePrincipal”
  }
 
 resource “oci_core_virtual_network” “VCN” {
@@ -15,4 +14,10 @@ resource “oci_core_virtual_network” “VCN” {
  dns_label      = “VCN”
  compartment_id = “${var.compartment_ocid}”
  display_name   = “VCN”
+}
+resource “oci_core_internet_gateway” “IGW” {
+ compartment_id = “${var.compartment_ocid}”
+ display_name   = “IGW”
+ enabled        = true
+ vcn_id         = “${oci_core_virtual_network.demoVCN.id}”
 }
