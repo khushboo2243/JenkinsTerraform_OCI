@@ -11,7 +11,7 @@ pipeline {
    stage('Checkout') {
      steps {
        checkout scm
-       sh '/var/lib/jenkins/workspace/Terraform/terraform.tfvars'
+       sh '/var/lib/jenkins/workspace/Terraform/env-vars'
 
      }
    }
