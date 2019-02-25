@@ -12,7 +12,7 @@ pipeline {
      steps {
        sh 'echo $PWD'
        sh 'echo $SVC_ACCOUNT_KEY | base64 -d > terraform.tfvars'
-       sh '${WORKSPACE}. /var/lib/jenkins/workspace/TerraformDemo/env-vars'
+       sh '${WORKSPACE} ./var/lib/jenkins/workspace/TerraformDemo/env-vars'
 
      }
    }
