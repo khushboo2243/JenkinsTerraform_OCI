@@ -7,6 +7,7 @@ variable “region” {}
 
 provider “oci” {
  region = “us-ashburn-1"
+ auth   = "InstancePrincipal"
  }
 
 resource “oci_core_virtual_network” “VCN” {
