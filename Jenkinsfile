@@ -11,7 +11,7 @@ pipeline {
    stage('Checkout') {
      steps {
        checkout scm
-       sh '/var/lib/jenkins/workspace/TerraformDemo/env-vars'
+       sh 'echo $PWD'
 
      }
    }
